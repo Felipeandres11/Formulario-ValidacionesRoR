@@ -1,0 +1,16 @@
+<%= form_with model: @Sale do |f| %>
+  <%= f.label :cod, "Codigo"%>
+  <%= f.text_field :cod %>
+  <%= f.label :detail, "Detalle"%>
+  <%= f.text_field :detail %>
+  <%= f.label :category, "Categoria"%>
+  <%= f.number_field :category %>
+  <%= f.label :value, "Valor"%>
+  <%= f.number_field  :content %>
+  <%= f.label :discount, "Descuento"%>
+  <%= f.number_field  :discount %>
+  <%= check_box_tag(:iva) %>
+  <%= label_tag(:iva, "Exento de Iva") %>
+  </br>
+  <%= f.submit "Enviar" %>
+<% end %>
