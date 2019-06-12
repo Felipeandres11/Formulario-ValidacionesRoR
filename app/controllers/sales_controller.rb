@@ -19,7 +19,7 @@ class SalesController < ApplicationController
 
         @sale.tax = 19
 
-        @sale.total = (@discount) - (@sale.tax*@discount/100)
+        @sale.total = (@discount) + (@sale.tax*@discount/100)
 
     else
         @sale.tax = 0
