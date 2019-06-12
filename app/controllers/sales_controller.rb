@@ -9,7 +9,7 @@ class SalesController < ApplicationController
 
     @sale = Sale.new(post_params)
 
-    if @sale.discount > 0
+    if @sale.discount >= 0
        @discount = (@sale.value) - (@sale.value * @sale.discount/100)
 
 
@@ -19,12 +19,17 @@ class SalesController < ApplicationController
 
         @sale.tax = 19
 
+        @sale.total = (@discount) - (@sale.tax*@discount/100)
+
     else
         @sale.tax = 0
+        @sale.total = (@sale.value) - (@sale.value * @sale.discount/100)
+     
+
 
     end
 
-    @sale.total = @sale.value - (@sale.tax*@discount/100)
+    
 
     @sale.save
     redirect_to sales_done_path
