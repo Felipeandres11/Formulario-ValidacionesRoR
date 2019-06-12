@@ -1,16 +1,28 @@
-<%= form_with model: @Sale do |f| %>
+
+<div class="container-fluid py-5">
+<h1> Formulario </h1>
+<%= form_with  model: @sale do |f| %>
+
   <%= f.label :cod, "Codigo"%>
-  <%= f.text_field :cod %>
+  <%= f.number_field :cod %>
+  </br>
   <%= f.label :detail, "Detalle"%>
-  <%= f.text_field :detail %>
+  <%= f.text_area :detail %>
+  </br>
   <%= f.label :category, "Categoria"%>
-  <%= f.number_field :category %>
+  <%= f.select :category, options_for_select(@categories), {prompt: 'Seleccione una categoria'} %>
+  </br>
   <%= f.label :value, "Valor"%>
-  <%= f.number_field  :content %>
+  <%= f.number_field  :value %>
+  </br>
   <%= f.label :discount, "Descuento"%>
   <%= f.number_field  :discount %>
-  <%= check_box_tag(:iva) %>
-  <%= label_tag(:iva, "Exento de Iva") %>
+  </br>
+  <%= f.label(:tax, "Exento de Iva") %>
+  <%= f.check_box(:tax) %>
+
+  </br>
   </br>
   <%= f.submit "Enviar" %>
 <% end %>
+</div>
